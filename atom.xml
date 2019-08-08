@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-07-29T23:05:26.170Z</updated>
+  <updated>2019-08-08T23:48:15.472Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,52 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Git 实用指南</title>
+    <link href="http://yoursite.com/2019/08/08/git/"/>
+    <id>http://yoursite.com/2019/08/08/git/</id>
+    <published>2019-08-08T21:38:49.000Z</published>
+    <updated>2019-08-08T23:48:15.472Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="/2019/08/08/git/git.png" alt></p><a id="more"></a><blockquote><p>最近用git结果傻了，不小心把东西给删了，一边抱怨自己的傻，脑子不够用，一边觉得是自己真心基本命令不熟，本来的版本管理现在只知道个push和pull，出了问题就不知道怎么对付，心疼自己，顺便出一份指南，省的之后忘了这个怎么用。 </p></blockquote><h4 id="Git-简介"><a href="#Git-简介" class="headerlink" title="Git 简介"></a>Git 简介</h4><p>Git，简而言之就是一个世界上最先进的分布式版本控制系统。CVS和SVN都是集中式的版本控制系统，版本都是存放在中央服务器中的，如果不能联网的话，就没有正确的代码。而分布式的系统中，每个人的电脑中都是一个完整的版本库。</p><h4 id="Git原理"><a href="#Git原理" class="headerlink" title="Git原理"></a>Git原理</h4><p><img src="/2019/08/08/git/git_workflow.png" alt></p><h4 id="Git-获取仓库"><a href="#Git-获取仓库" class="headerlink" title="Git 获取仓库"></a>Git 获取仓库</h4><p><code>git init</code>: 创建Git可以管理的仓库，当前目录下会多一个<code>.git</code>文件夹。</p><p><code>git clone /path/to/repo</code>: 检出仓库。</p><p><code>git clone username@host:/path/to/repo</code>: 从远程服务器中检出仓库。</p><h4 id="Git-日常操作"><a href="#Git-日常操作" class="headerlink" title="Git 日常操作"></a>Git 日常操作</h4><p><code>git add file</code> : 计划改动，将文件提交到缓冲区中， 将对文件的修改提交到暂存区。合并遇到冲突时候，使用这个命令进行将文件标记为合并成功。</p><p><code>git commit -m &quot;message&quot;</code>: 提交改动，将改动从缓冲区提交到<code>HEAD</code>，但是不是远程仓库。</p><p><code>git status</code>: 查看仓库当前状态。</p><p><code>git diff &lt;filename&gt;</code>: 查看当前对文件的修改内容（未提交到缓冲区）。</p><p><code>git log</code>: 获取当前提交ID。显示从最近到最远的提交日志。<code>--pretty=oneline</code> 参数可以简化输出。<code>--graph</code> 可以查看分支合并图。</p><h4 id="Git-时光穿梭"><a href="#Git-时光穿梭" class="headerlink" title="Git 时光穿梭"></a>Git 时光穿梭</h4><p><code>git reset --hard HEAD^</code>: <code>HEAD</code>表示最新版本，<code>HEAD~100</code>表示之前100个版本，<code>HEAD^</code>表示上一个版本，选择回退到那个版本。</p><p><code>git reflog</code>: 记录每一次的<code>git</code>命令，选择去未来的那个版本。</p><p><code>git checkout -- &lt;filename&gt;</code>: 将工作区的修改撤销，恢复到缓冲区或者是版本库。</p><p><code>git reset HEAD &lt;filename&gt;</code>： 将暂存区的修改撤销，重新放回工作区。</p><p><code>rm &lt;filename&gt; &amp;&amp; git rm &lt;filename&gt;</code>：删除文件。</p><h4 id="Git-远程仓库"><a href="#Git-远程仓库" class="headerlink" title="Git 远程仓库"></a>Git 远程仓库</h4><p><code>git remote -v</code>: 显示远程仓库，</p><p><code>git remote add origin &lt;server&gt;</code>: 将仓库连接到某个远程服务器。</p><p><code>git push origin &lt;master&gt;</code>: 将改动提交到了远程仓库中，可以切换为想要推送的不同分支。 （可以使用<code>-u</code>参数对于本地仓库和远程仓库进行关联）</p><p><code>git pull</code>: 将工作目录的代码获取并合并远程的改动。</p><p><code>git push</code>出现冲突的时候：需要先<code>git pull</code> 把最新的提交从分支中扒下来，然后在本地合并，解决冲突，在推送。</p><p><code>git branch --set-upstream-to=origin/dev dev</code>: 将本地特定分支和远程<code>dev</code>分支进行绑定。</p><p><code>git rebase</code>: 将分叉的提交历史变成一条直线</p><h4 id="Git-分支管理"><a href="#Git-分支管理" class="headerlink" title="Git 分支管理"></a>Git 分支管理</h4><p><code>git branch</code>: 查看当前分支。</p><p><code>git checkout -b feature_x</code>: 新建一个叫做<code>feature_x</code>的分支，并且切换过去。<br>        <code>git branch feature_x  &amp;&amp; git checkout feature_x</code></p><p><code>git checkout master</code>: 切换到主分支。</p><p><code>git checkout -d feature_x</code>: 删除新建的分支。</p><p><code>git checkout -D feature_x</code>: 强制删除未合并分支。</p><p><code>git merge &lt;branch&gt;</code>: 合并其他分支到当前分支， 使用<code>--no-ff</code>参数来 禁用<code>Fast Forward</code>模式并追加<code>-m commit</code>添加Commit。</p><p><code>git diff &lt;source_branch&gt; &lt;feature_branch&gt;</code>: 进行两个分支的比较。</p><p><code>git stach</code>: 将当前工作现场保存下来，等之后恢复现场后可以继续工作。</p><p><code>git stash list</code>: 将工作现场列表显示出来。</p><p><code>git stash pop</code> = <code>git stash apply &amp;&amp; git stash pop</code>: 处理之前的工作现场。</p><h4 id="Git-标签管理"><a href="#Git-标签管理" class="headerlink" title="Git 标签管理"></a>Git 标签管理</h4><blockquote><p>Git 的标签就是一个和commit 挂钩，并且有意义的名字。</p></blockquote><p><code>git tag</code>: 查看所有标签。</p><p><code>git tag -a &lt;1.0.0&gt; &lt;commit_id&gt; -m &lt;comment&gt;</code>: 给某次提交打标签。</p><p><code>git tag -d v0.1</code>:  删除本地标签。</p><p><code>git push origin &lt;tagname&gt;</code>: 将标签提交到远程。</p><p><code>git push origin --tags</code>: 将全部标签提交到远程。</p><p><code>git push origin:refs/tags/&lt;tagname&gt;</code>:  删除远程标签</p><p><code>git show &lt;tagname&gt;</code>: 查看标签信息。</p><p><code>git fetch origin &amp;&amp; git reset --hard origin/master</code>： 放弃当前修改，从服务器上获取最新修改，并将本地分支指向它。</p><h4 id="Git-其他"><a href="#Git-其他" class="headerlink" title="Git 其他"></a>Git 其他</h4><p><code>.gitignore</code>文件</p><h4 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h4><ul><li><a href="https://www.liaoxuefeng.com/wiki/896043488029600" target="_blank" rel="noopener">廖雪峰的Git教程</a></li><li><a href="https://rogerdudler.github.io/git-guide/index.zh.html" target="_blank" rel="noopener">Git 简明指南</a></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img src=&quot;/2019/08/08/git/git.png&quot; alt&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="开发" scheme="http://yoursite.com/categories/%E5%BC%80%E5%8F%91/"/>
+    
+    
+      <category term="git" scheme="http://yoursite.com/tags/git/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java &amp;&amp; Python 算法面试常用类以及方法总结</title>
+    <link href="http://yoursite.com/2019/07/30/Java-data-structure/"/>
+    <id>http://yoursite.com/2019/07/30/Java-data-structure/</id>
+    <published>2019-07-30T19:58:00.000Z</published>
+    <updated>2019-07-30T20:03:35.640Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="/2019/07/30/Java-data-structure/datastructure.png" alt></p><a id="more"></a>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img src=&quot;/2019/07/30/Java-data-structure/datastructure.png&quot; alt&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="知识总结" scheme="http://yoursite.com/categories/%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/"/>
+    
+    
+      <category term="Java" scheme="http://yoursite.com/tags/Java/"/>
+    
+      <category term="Python" scheme="http://yoursite.com/tags/Python/"/>
+    
+  </entry>
   
   <entry>
     <title>Java 知识点总结</title>
