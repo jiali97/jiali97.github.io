@@ -102,7 +102,7 @@
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/2019/08/08/git/git.png">
 <meta property="og:image" content="http://yoursite.com/2019/08/08/git/git_workflow.png">
-<meta property="og:updated_time" content="2019-08-08T23:48:15.472Z">
+<meta property="og:updated_time" content="2019-08-09T01:18:47.641Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Git 实用指南">
 <meta name="twitter:image" content="http://yoursite.com/2019/08/08/git/git.png">
@@ -414,7 +414,7 @@
                 
               
 
-              <time title="Created: 2019-08-08 17:38:49 / Modified: 19:48:15" itemprop="dateCreated datePublished" datetime="2019-08-08T17:38:49-04:00">2019-08-08</time>
+              <time title="Created: 2019-08-08 17:38:49 / Modified: 21:18:47" itemprop="dateCreated datePublished" datetime="2019-08-08T17:38:49-04:00">2019-08-08</time>
             </span>
           
 
@@ -536,8 +536,8 @@
 <h4 id="Git-分支管理"><a href="#Git-分支管理" class="headerlink" title="Git 分支管理"></a>Git 分支管理</h4><p><code>git branch</code>: 查看当前分支。</p>
 <p><code>git checkout -b feature_x</code>: 新建一个叫做<code>feature_x</code>的分支，并且切换过去。<br>        <code>git branch feature_x  &amp;&amp; git checkout feature_x</code></p>
 <p><code>git checkout master</code>: 切换到主分支。</p>
-<p><code>git checkout -d feature_x</code>: 删除新建的分支。</p>
-<p><code>git checkout -D feature_x</code>: 强制删除未合并分支。</p>
+<p><code>git branch -d feature_x</code>: 删除新建的分支。</p>
+<p><code>git branch -D feature_x</code>: 强制删除未合并分支。</p>
 <p><code>git merge &lt;branch&gt;</code>: 合并其他分支到当前分支， 使用<code>--no-ff</code>参数来 禁用<code>Fast Forward</code>模式并追加<code>-m commit</code>添加Commit。</p>
 <p><code>git diff &lt;source_branch&gt; &lt;feature_branch&gt;</code>: 进行两个分支的比较。</p>
 <p><code>git stach</code>: 将当前工作现场保存下来，等之后恢复现场后可以继续工作。</p>
